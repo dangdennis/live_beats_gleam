@@ -1,16 +1,22 @@
 defmodule LiveBeats.MixProject do
   use Mix.Project
 
+  @app :live_beats
+
   def project do
     [
-      app: :live_beats,
+      app: @app,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      archives: [mix_gleam: "~> 0.4.0"],
+      aliases: MixGleam.add_aliases(aliases()),
+      erlc_paths: ["build/dev/erlang/#{@app}/build"],
+      erlc_include_path: "build/dev/erlang/#{@app}/include",
     ]
   end
 
@@ -54,7 +60,9 @@ defmodule LiveBeats.MixProject do
       {:heroicons, "~> 0.2.2"},
       {:castore, "~> 0.1.13"},
       {:tailwind, "~> 0.1"},
-      {:libcluster, "~> 3.3.1"}
+      {:libcluster, "~> 3.3.1"},
+      {:gleam_stdlib, "~> 0.18"},
+      {:gleeunit, "~> 0.5", only: [:dev, :test], runtime: false}
     ]
   end
 
