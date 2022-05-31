@@ -94,6 +94,7 @@ defmodule LiveBeatsWeb do
       import Phoenix.View
 
       import LiveBeatsWeb.ErrorHelpers
+      import Phoenix.LiveView.Helpers
       import LiveBeatsWeb.LiveHelpers
       import LiveBeatsWeb.Gettext
       alias LiveBeatsWeb.Router.Helpers, as: Routes
