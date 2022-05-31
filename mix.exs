@@ -12,12 +12,11 @@ defmodule LiveBeats.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "#{@app}",
       archives: [mix_gleam: "~> 0.4.0"],
-      aliases: MixGleam.add_aliases(),
+      aliases: MixGleam.add_aliases(aliases()),
+      deps: deps(),
       erlc_paths: ["build/dev/erlang/#{@app}/build"],
       erlc_include_path: "build/dev/erlang/#{@app}/include",
       start_permanent: Mix.env() == :prod,
-      aliases: aliases(),
-      deps: deps()
     ]
   end
 
